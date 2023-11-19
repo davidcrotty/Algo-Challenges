@@ -6,25 +6,18 @@ class TwoSum {
      * Return indicies in array that add up to target
      */
     fun twoSum(nums: IntArray, target: Int): IntArray {
-        val result = intArrayOf(0, 0)
+        val tracker = mutableMapOf<Int, Int>()
 
-        loop@ for ((i, value1) in nums.withIndex()) {
-
-            loop2@ for((x, value2) in nums.withIndex()) {
-
-                if(x == i) {
-                    continue@loop2
-                }
-
-                if(value1 + value2 == target) {
-                    result[0] = i
-                    result[1] = x
-                    break@loop
-                }
+        for ((i, value) in nums.withIndex()) {
+            if (tracker.containsKey(nums[i])) {
+                // exit condition
+                val left = tracker[nums[i]]!!
+                return intArrayOf(left, i)
+            } else {
+                tracker[target - nums[i]] = i
             }
-
         }
 
-        return result
+        return intArrayOf(0, 0)
     }
 }
