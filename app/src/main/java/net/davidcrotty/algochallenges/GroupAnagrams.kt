@@ -41,13 +41,28 @@ class GroupAnagrams {
         for (compare1 in scoredCollection1) {
             val matches = mutableListOf<String>()
 
-            for (compare2 in scoredCollection2) {
+            val iterator = scoredCollection2.iterator()
+            while (iterator.hasNext()) {
+                val compare2 = iterator.next()
+
                 if (compare1 == compare2) {
                     matches.add(compare2.keys.toString())
+                    iterator.remove()
+                    // scoredCollection2.remove(compare2)
                 }
             }
 
-            results.add(matches)
+            if (!matches.isEmpty()) {
+                results.add(matches)
+            }
+        }
+
+        val iterator = results.iterator()
+        while (iterator.hasNext()) {
+            val iterable = iterator.next()
+            if (iterable.isEmpty()) {
+                iterator.remove()
+            }
         }
 
         return results
