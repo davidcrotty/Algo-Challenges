@@ -1,6 +1,5 @@
 package net.davidcrotty.algochallenges
 
-import junit.framework.TestCase.assertEquals
 import org.junit.Assert.assertArrayEquals
 import org.junit.Test
 
@@ -15,7 +14,7 @@ class TopKElementsTest {
 
         val result = sut.topKFrequent(nums, k)
 
-        val expected = intArrayOf(2, 1)
+        val expected = intArrayOf(1, 2)
         assertArrayEquals(expected, result)
     }
 }

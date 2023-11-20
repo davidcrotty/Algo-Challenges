@@ -1,14 +1,30 @@
 package net.davidcrotty.algochallenges
 
+import java.util.PriorityQueue
+
 class TopKElements {
 
     fun topKFrequent(nums: IntArray, k: Int): IntArray {
-        val map = nums.toList().groupingBy { it }.eachCount()
+        val freqMap = mutableMapOf<Int, Int>()
 
-        val freq = Array<MutableList<Int>>(nums.size + 1) { mutableListOf() }
-        map.forEach { key, value ->  freq[value].add(key) }
+        // gives sorted buckets of frequency (bucket sort)
+        for(num in nums) {
+            freqMap.put(num, freqMap.getOrDefault(num, 0) + 1)
+        }
 
-        return freq.flatMap { it }.takeLast(k).toIntArray()
+        val queue = PriorityQueue<Int> { a, b -> freqMap[b]!! - freqMap[a]!! }
+
+        for (pair in freqMap) {
+            queue.offer(pair.key)
+        }
+
+        val result = IntArray(k)
+
+        for (index in 0 until k) {
+            result[index] = queue.poll()
+        }
+
+        return result
     }
 
 }
