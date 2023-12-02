@@ -9,7 +9,6 @@ class ProductExceptSelf {
         var left = 1
         var right = 1
 
-        // loop through each in array, produce array excluding that number
         for(i in nums.indices) {
           products[i] *= left
           products[end - i] *= right
