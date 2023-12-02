@@ -22,6 +22,14 @@ class SudokuSolver {
                     return false
                 }
 
+                val colindex = 3*(col%3) + row%3
+                val rowindex = 3*(col/3) + row/3
+
+                val b = board[colindex][rowindex]
+
+                if (b != "." && !cube.add(b.toCharArray().first())) {
+                    return false
+                }
             }
         }
 
