@@ -12,7 +12,9 @@ class TopKElements {
             freqMap.put(num, freqMap.getOrDefault(num, 0) + 1)
         }
 
-        val queue = PriorityQueue<Int> { a, b -> freqMap[b]!! - freqMap[a]!! }
+        val queue = PriorityQueue<Int> { a, b ->
+            freqMap[b]!! - freqMap[a]!!
+        }
 
         for (pair in freqMap) {
             queue.offer(pair.key)
