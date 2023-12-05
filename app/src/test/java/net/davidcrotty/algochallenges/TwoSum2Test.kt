@@ -16,4 +16,16 @@ class TwoSum2Test {
         val expected = intArrayOf(1, 2)
         assertArrayEquals(expected, actual)
     }
+
+    @Test
+    fun twoSum22() {
+        val input = intArrayOf(2,3,4)
+        val target = 6
+
+        val sut = TwoSum2()
+        val actual = sut.twoSum2(input, target)
+
+        val expected = intArrayOf(1, 3)
+        assertArrayEquals(expected, actual)
+    }
 }
