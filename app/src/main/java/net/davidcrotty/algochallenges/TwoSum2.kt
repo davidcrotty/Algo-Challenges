@@ -11,12 +11,13 @@ class TwoSum2 {
 
             val list = input.toMutableList()
             list.removeAt(i)
-            val iterator = list.iterator()
+            val iterator = list.iterator().withIndex()
             while(iterator.hasNext()) {
                 val next = iterator.next()
-                if (left + next == target) {
-                    result[0] = left
-                    result[1] = next
+                if (left + next.value == target) {
+                    val normalised = i + 1
+                    result[0] = normalised
+                    result[1] = next.index + normalised + 1
                     return result
                 }
             }
