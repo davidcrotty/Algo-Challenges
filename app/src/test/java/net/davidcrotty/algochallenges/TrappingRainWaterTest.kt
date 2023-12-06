@@ -15,4 +15,15 @@ class TrappingRainWaterTest {
         val expected = 6
         assertEquals(expected, actual)
     }
+
+    @Test
+    fun trappingRainWater2() {
+        val height = intArrayOf(4,2,0,3,2,5)
+
+        val sut = TrappingRainWater()
+        val actual = sut.trapRainWater(height)
+
+        val expected = 9
+        assertEquals(expected, actual)
+    }
 }
