@@ -25,7 +25,7 @@ class ContainerWithMostWater {
                 }
 
                 val area = if (smallestpointP == startP) {
-                    verticalLines[startP] * (endP - 1)
+                    verticalLines[startP] * (endP)
                 } else {
                     verticalLines[endP] * (endP - startP)
                 }

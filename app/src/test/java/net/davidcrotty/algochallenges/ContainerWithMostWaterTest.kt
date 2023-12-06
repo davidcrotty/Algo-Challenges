@@ -15,4 +15,15 @@ class ContainerWithMostWaterTest {
         val expectedArea = 49
         assertEquals(expectedArea, actual)
     }
+
+    @Test
+    fun containerWithMostWater2() {
+        val inputLines = intArrayOf(1,1)
+        val sut = ContainerWithMostWater()
+
+        val actual = sut.containerWithMostWater(inputLines)
+
+        val expectedArea = 1
+        assertEquals(expectedArea, actual)
+    }
 }
