@@ -11,6 +11,7 @@ class TrappingRainWater {
         var peak1P = 0
         var peak2P = 1
         var match = false
+        var trappedRain = 0
 
         for(i in height.indices) {
             if (peak1P > height.size - 1) break
@@ -24,6 +25,24 @@ class TrappingRainWater {
                 if (peak1 >= 1 && peak2 >= peak1 && peak2P - peak1P >= 0) {
                     // match, scan for area
                     print("| peak, first: $peak1, second: $peak2 ")
+                    var areaStartP = peak1P + 1
+                    var areaEndP = peak2P - 1
+
+                    val lowestPeak =  if (peak2 > peak1) {
+                        peak1
+                    } else {
+                        peak2
+                    }
+
+                    while(areaStartP <= areaEndP) {
+
+                        var depth = lowestPeak - height[areaStartP]
+                        trappedRain = trappedRain + depth
+
+                        areaStartP++
+                    }
+
+
                     // then shift along
                     peak1P = peak2P
                     peak2P++
@@ -40,6 +59,6 @@ class TrappingRainWater {
             peak2P = peak1P + 1
         }
 
-        return 0
+        return trappedRain
     }
 }
