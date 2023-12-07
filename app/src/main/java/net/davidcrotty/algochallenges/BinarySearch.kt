@@ -3,10 +3,7 @@ package net.davidcrotty.algochallenges
 class BinarySearch {
 
     fun binarySearch(nums: IntArray, target: Int): Int {
-
-        val result = search(target, nums, 0, nums.size - 1)
-
-        return result
+        return search(target, nums, 0, nums.size - 1)
     }
 
     private fun search(target: Int, nums: IntArray, leftP: Int, rightP: Int): Int {
