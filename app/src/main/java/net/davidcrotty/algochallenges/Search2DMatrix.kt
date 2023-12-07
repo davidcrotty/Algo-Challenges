@@ -8,30 +8,27 @@ class Search2DMatrix {
 
 
 
-        return search(matrix, target, 0, (matrix.size - 1)  * (matrix.size - 1))
+        return search(matrix, target, 0, (matrix.size * matrix.size) - 1)
     }
 
     private fun search(matrix: Array<IntArray>, target: Int, start: Int, end: Int): Boolean {
 
-        if (start >= end) return false
+         if (start >= end) return false
 
-        val col = (end - start) / 2
-        val i = col % 2
-        val j = col / 2
+        val col = matrix[0].size
+        val mid = (start + end) / 2
+        val j = mid % col
+        val i = mid / col
 
-        val mid = matrix[i][j]
-
-        if (mid == target) {
+        return if (matrix[i][j] == target) {
             return true
-        } else if (mid > target) {
+        } else if (target < matrix[i][j]) {
             // left
-            var endLocal = end - 1
+            var endLocal = mid - 1
             search(matrix, target, start, endLocal)
         } else {
-            var startLocal = start + 1
+            var startLocal = mid + 1
             search(matrix, target, startLocal, end)
         }
-
-        return false
     }
 }
