@@ -16,4 +16,16 @@ class KokoEatsBananasTest {
         val expected = 4
         assertEquals(expected, actual)
     }
+
+    @Test
+    fun bananaPile2() {
+        val bananaPile = intArrayOf(30,11,23,4,20)
+        val hours = 5
+
+        val sut = KokoEatsBananas()
+        val actual = sut.minEatingSpeed(bananaPile, hours)
+
+        val expected = 30
+        assertEquals(expected, actual)
+    }
 }

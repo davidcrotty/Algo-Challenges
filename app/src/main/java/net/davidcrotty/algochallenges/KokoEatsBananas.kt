@@ -18,7 +18,7 @@ class KokoEatsBananas {
 
         var currentK = 0
 
-        while(start <= end) {
+        while((end + 1) > start) {
 
             val mid = (start + end) / 2
 
@@ -26,11 +26,12 @@ class KokoEatsBananas {
             // grab mid, brute force array, is it too fast or too slow? (== h?)
 
             if (hours <= h) {
-                currentK = hours
+                if (possibleKValues[mid] > currentK) {
+                    currentK = possibleKValues[mid]
+                }
             }
 
-            // force k value
-            if (hours < h) {
+            if (hours > h) {
                 // left
                 end = mid - 1
             } else {
