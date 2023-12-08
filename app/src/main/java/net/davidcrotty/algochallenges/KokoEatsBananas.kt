@@ -14,11 +14,11 @@ class KokoEatsBananas {
         }
 
         var start = 0
-        var end = possibleKValues.size - 1
+        var end = possibleKValues.size
 
-        var currentK = 0
+        var currentK = largest
 
-        while((end + 1) > start) {
+        while(start <= end) {
 
             val mid = (start + end) / 2
 
@@ -26,16 +26,9 @@ class KokoEatsBananas {
             // grab mid, brute force array, is it too fast or too slow? (== h?)
 
             if (hours <= h) {
-                if (possibleKValues[mid] > currentK) {
-                    currentK = possibleKValues[mid]
-                }
-            }
-
-            if (hours > h) {
-                // left
+                currentK = Math.min(possibleKValues[mid], currentK)
                 end = mid - 1
             } else {
-                // right
                 start = mid + 1
             }
         }
@@ -49,7 +42,7 @@ class KokoEatsBananas {
         var totalHours = 0
 
         for (i in pile.indices) {
-            var hoursInPile = pile[i] / k
+            var hoursInPile = Math.ceil(pile[i].toDouble() / k).toInt()
             totalHours = totalHours + hoursInPile
         }
 
