@@ -14,7 +14,7 @@ class MinimumRotatedSortedArray {
 
             if (mid - 1 < 0) {
                 return Math.min(nums[mid], nums[mid + 1])
-            } else if (mid + 1 > nums.size) {
+            } else if (mid + 1 >= nums.size) {
                 return Math.min(nums[mid], nums[mid - 1])
             }
 
