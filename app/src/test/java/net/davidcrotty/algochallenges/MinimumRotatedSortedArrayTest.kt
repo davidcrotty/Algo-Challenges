@@ -15,4 +15,15 @@ class MinimumRotatedSortedArrayTest {
         val expected = 1
         assertEquals(expected, actual)
     }
+
+    @Test
+    fun findMin2() {
+        val nums = intArrayOf(4,5,6,7,0,1,2)
+        val sut = MinimumRotatedSortedArray()
+
+        val actual = sut.findMin(nums)
+
+        val expected = 0
+        assertEquals(expected, actual)
+    }
 }
