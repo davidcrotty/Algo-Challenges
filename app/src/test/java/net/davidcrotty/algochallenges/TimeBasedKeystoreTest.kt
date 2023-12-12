@@ -13,7 +13,7 @@ class TimeBasedKeystoreTest {
         val sut = TimeBasedKeystore()
         val actual = sut.get(key, timestamp)
 
-        val expected = null
+        val expected = ""
         assertEquals(expected, actual)
     }
 
@@ -25,6 +25,24 @@ class TimeBasedKeystoreTest {
 
         val sut = TimeBasedKeystore()
         sut.set(key, value, timestamp)
+
+        val actual = sut.get(key, timestamp)
+
+        val expected = "bazz"
+        assertEquals(expected, actual)
+    }
+
+    @Test
+    fun testSetDifferentValueForTimestamp() {
+        val key = "bar"
+        val value = "bazz"
+        val timestamp = 1
+        val sut = TimeBasedKeystore()
+        sut.set(key, value, timestamp)
+
+        val newValue = "foo2"
+        val newTimestamp = 2
+        sut.set(key, newValue, newTimestamp)
 
         val actual = sut.get(key, timestamp)
 
