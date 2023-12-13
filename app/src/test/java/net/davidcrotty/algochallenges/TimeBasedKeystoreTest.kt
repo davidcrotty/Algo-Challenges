@@ -44,6 +44,10 @@ class TimeBasedKeystoreTest {
         val newTimestamp = 2
         sut.set(key, newValue, newTimestamp)
 
+        val newValue2 = "foo3"
+        val newTimestamp2 = 3
+        sut.set(key, newValue2, newTimestamp2)
+
         val actual = sut.get(key, timestamp)
 
         val expected = "bazz"
