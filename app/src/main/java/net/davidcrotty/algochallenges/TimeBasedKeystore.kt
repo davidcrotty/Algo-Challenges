@@ -5,6 +5,29 @@ class TimeBasedKeystore {
     private val map = mutableMapOf<String, MutableList<Pair<Int, String>>>()
 
     fun get(key: String, timestamp: Int): String {
+
+        val value = map[key]
+
+        if (value == null) return ""
+
+        var left = 0
+        var right = value.size - 1
+        var midP: Int = -1
+
+        while (left <= right) {
+            midP = (left + right) / 2
+
+            if (value[midP].first == timestamp) {
+                return value[midP].second
+            } else if (timestamp > value[midP].first) {
+                midP++
+                left = midP
+            } else {
+                midP--
+                right = midP
+            }
+        }
+
         return ""
     }
 
