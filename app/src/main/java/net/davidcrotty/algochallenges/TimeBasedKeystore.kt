@@ -28,7 +28,7 @@ class TimeBasedKeystore {
             }
         }
 
-        return ""
+        return value[value.size - 1].second
     }
 
     fun set(key: String, value: String, timestamp: Int) {

@@ -53,4 +53,21 @@ class TimeBasedKeystoreTest {
         val expected = "bazz"
         assertEquals(expected, actual)
     }
+
+    @Test
+    fun testGreaterTimestamp() {
+        val key = "bar"
+        val value = "bazz"
+        val timestamp = 1
+        val sut = TimeBasedKeystore()
+        sut.set(key, value, timestamp)
+
+        val newValue = "foo2"
+        val newTimestamp = 2
+        sut.set(key, newValue, newTimestamp)
+
+        val actual = sut.get("bar", 4)
+
+        assertEquals(newValue, actual)
+    }
 }
