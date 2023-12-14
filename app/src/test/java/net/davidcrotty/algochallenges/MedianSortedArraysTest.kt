@@ -29,4 +29,16 @@ class MedianSortedArraysTest {
         assertEquals(expected, actual)
     }
 
+    @Test
+    fun testMedianSortedArrays3() {
+        val nums1 = intArrayOf(1, 2, 2, 3)
+        val nums2 = intArrayOf(3, 4, 4)
+
+        val sut = MedianSortedArrays()
+        val actual = sut.findMedianSortedArrays(nums1, nums2)
+
+        val expected = 3.0
+        assertEquals(expected, actual)
+    }
+
 }
