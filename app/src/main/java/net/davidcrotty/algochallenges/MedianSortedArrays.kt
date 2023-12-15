@@ -4,50 +4,45 @@ class MedianSortedArrays {
 
     fun findMedianSortedArrays(nums1: IntArray, nums2: IntArray): Double {
 
-        // find partition
-        val totalSize = nums1.size + nums2.size
-
-        val smallest = Math.min(nums1.size, nums2.size)
-        val smallestArray = if (smallest == nums1.size) {
+        val smallest = if (nums1.size < nums2.size) {
             nums1
         } else {
             nums2
         }
 
-        val largest = Math.max(nums1.size, nums2.size)
-        val largestArray = if (smallest == nums1.size) {
-            nums2
-        } else {
+        val largest = if (nums1.size > nums2.size) {
             nums1
+        } else {
+            nums2
         }
 
-        var smallLeftP = 0
-        var smallRightP = smallestArray.size - 1
+        var leftP = 0
+        var rightP = smallest.size - 1
+        val half = ((smallest.size + largest.size) / 2)
 
-        // loop
-        while(smallLeftP < smallRightP) {
-            var smallestLeftMid = (smallLeftP + smallRightP) / 2
+        while (true) {
+            var smallMidP = (leftP + rightP) / 2 // smallest
+            var largeMidP =  half - smallMidP - 2 // largest
 
-            val largestLeftMid = (totalSize / 2) - smallestLeftMid
+            if (smallest[smallMidP] <= largest[largeMidP + 1] &&
+                largest[largeMidP] <= smallest[smallMidP + 1]) {
 
-            // validate partition
-            if (smallestArray[smallestLeftMid] <= largestArray[largestLeftMid + 1] == false ||
-                largestArray[largestLeftMid] <= smallestArray[smallestLeftMid + 1] == false) {
-                smallestLeftMid++
-                smallLeftP = smallestLeftMid
-            } else {
-                // if even total
-                if (totalSize % 2 == 0) {
-                    val maxLeft = Math.max(smallestArray[smallestLeftMid] , largestArray[smallestLeftMid])
-                    val maxRight = Math.min(smallestArray[smallestLeftMid + 1], largestArray[smallestLeftMid + 1])
-                    return (maxLeft + maxRight) / 2.0
+                if (smallest.size % 2 == 0) {
+                    // even case
+                    val max = Math.max(smallest[smallMidP], largest[largeMidP])
+                    val min = Math.min(largest[largeMidP + 1], smallest[smallMidP + 1])
+                    return (max + min) / 2.0
                 } else {
-                    return Math.min(smallestArray[smallestLeftMid].toDouble(), largestArray[largestLeftMid].toDouble())
+                    // odd case
+                    return Math.min(largest[largeMidP + 1].toDouble(), smallest[smallMidP + 1].toDouble())
                 }
-                // take min/max from both right/left
-                // else min between mid 2
+            } else if (smallest[smallMidP] > largest[largeMidP + 1] == false) {
+                // smallest is wrong
+                rightP = smallMidP - 1
+            } else {
+                // largest is wrong
+                leftP = smallMidP + 1
             }
-
         }
 
         return 0.0
