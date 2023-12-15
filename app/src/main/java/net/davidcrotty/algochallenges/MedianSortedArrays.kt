@@ -20,8 +20,8 @@ class MedianSortedArrays {
         }
 
         if (nums1.size == nums2.size) {
-            smallest = nums1
-            largest = nums2
+            largest = nums1
+            smallest = nums2
         }
 
         var leftP = 0
@@ -50,7 +50,7 @@ class MedianSortedArrays {
                     // odd case
                     return Math.min(rightNext, leftNext)
                 }
-            } else if (leftMiddle < rightNext) {
+            } else if (leftMiddle > rightNext) {
                 // smallest is wrong
                 rightP = smallMidP - 1
             } else {
