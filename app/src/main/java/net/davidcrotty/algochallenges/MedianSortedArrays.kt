@@ -1,61 +1,41 @@
 package net.davidcrotty.algochallenges
 
-import java.lang.Double.NEGATIVE_INFINITY
-import java.lang.Double.POSITIVE_INFINITY
-
 class MedianSortedArrays {
 
     fun findMedianSortedArrays(nums1: IntArray, nums2: IntArray): Double {
+        var nums1Local = nums1
+        var nums2Local = nums2
 
-        var smallest = if (nums1.size < nums2.size) {
-            nums1
-        } else {
-            nums2
+        if (nums1Local.size > nums2Local.size) {
+            nums1Local = nums2Local
+            nums2Local = nums1Local
         }
 
-        var largest = if (nums1.size > nums2.size) {
-            nums1
-        } else {
-            nums2
-        }
+        val m: Int = nums1Local.size
+        val n: Int = nums2Local.size
+        var low = 0
+        var high = m
 
-        if (nums1.size == nums2.size) {
-            largest = nums1
-            smallest = nums2
-        }
+        while (low <= high) {
+            val partitionX = (low + high) / 2 // smallest
+            val partitionY = (m + n + 1) / 2 - partitionX // largest
 
-        var leftP = 0
-        var rightP = smallest.size - 1
-        val half = Math.floorDiv(smallest.size + largest.size, 2)
+            val maxX = if (partitionX === 0) Int.MIN_VALUE else nums1[partitionX - 1]
+            val maxY = if (partitionY === 0) Int.MIN_VALUE else nums2[partitionY - 1]
 
-        while (true) {
-            var smallMidP = Math.floorDiv(leftP + rightP, 2) // smallest
-            var largeMidP =  half - smallMidP - 2 // largest
+            val minX = if (partitionX === m) Int.MAX_VALUE else nums1[partitionX]
+            val minY = if (partitionY === n) Int.MAX_VALUE else nums2[partitionY]
 
-            // both array extremes need accounting for
-            val leftMiddle = if (smallMidP < 0) NEGATIVE_INFINITY else smallest[smallMidP].toDouble()
-            val leftNext = if (smallMidP + 1 > smallest.size) POSITIVE_INFINITY else smallest[smallMidP + 1].toDouble()
-            val rightNext = if (largeMidP + 1 > largest.size) POSITIVE_INFINITY else largest[largeMidP + 1].toDouble()
-            val rightMiddle = if (largeMidP < 0) NEGATIVE_INFINITY else largest[largeMidP].toDouble()
-
-            if (leftMiddle <= rightNext &&
-                rightMiddle <= leftNext) {
-
-                if (smallest.size % 2 == 0) {
-                    // even case
-                    val max = Math.max(leftMiddle, rightMiddle)
-                    val min = Math.min(leftNext, rightNext)
-                    return (max + min) / 2.0
+            if (maxX <= minY && maxY <= minX) {
+                if ((m + n) % 2 == 0) {
+                    return (Math.max(maxX, maxY) + Math.min(minX, minY)) / 2.0;
                 } else {
-                    // odd case
-                    return Math.min(rightNext, leftNext)
+                    return Math.max(maxX, maxY).toDouble()
                 }
-            } else if (leftMiddle > rightNext) {
-                // smallest is wrong
-                rightP = smallMidP - 1
+            } else if (maxX > minY) {
+                high = partitionX - 1;
             } else {
-                // largest is wrong
-                leftP = smallMidP + 1
+                low = partitionX + 1;
             }
         }
 
