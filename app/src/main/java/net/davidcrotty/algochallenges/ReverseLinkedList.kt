@@ -1,10 +1,13 @@
 package net.davidcrotty.algochallenges
 
-import java.util.LinkedList
-
 class ReverseLinkedList {
 
-    fun reverseLinkedList(input: LinkedList<Int>): IntArray {
+    fun reverseLinkedList(head: ListNode): IntArray {
+
         return intArrayOf()
     }
+}
+
+class ListNode(var current: Int) {
+    var next: ListNode? = null
 }
