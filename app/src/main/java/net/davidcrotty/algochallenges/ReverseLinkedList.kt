@@ -2,9 +2,14 @@ package net.davidcrotty.algochallenges
 
 class ReverseLinkedList {
 
-    fun reverseLinkedList(head: ListNode): IntArray {
+    fun reverseLinkedList(head: ListNode): ListNode {
 
-        return intArrayOf()
+        var prev: ListNode? = null
+        var current: ListNode? = head
+
+
+
+        return head
     }
 }
 
