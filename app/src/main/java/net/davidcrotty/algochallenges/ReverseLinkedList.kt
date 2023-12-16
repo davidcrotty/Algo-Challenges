@@ -7,9 +7,12 @@ class ReverseLinkedList {
         var prev: ListNode? = null
         var current: ListNode? = head
 
+        while (current != null) {
+            prev = current
+            current = current.next
+        }
 
-
-        return head
+        return prev!!
     }
 }
 

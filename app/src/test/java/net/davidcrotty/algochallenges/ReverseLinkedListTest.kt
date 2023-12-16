@@ -21,7 +21,17 @@ class ReverseLinkedListTest {
         val sut = ReverseLinkedList()
         val actual = sut.reverseLinkedList(input)
 
-        val expected = ListNode(5)
+        val expected = ListNode(5).apply {
+            next = ListNode(4).apply {
+                next = ListNode(3).apply {
+                    next = ListNode(2).apply {
+                        next = ListNode(1)
+                    }
+                }
+            }
+        }
+
         assertEquals(expected.current, actual.current)
+        assertEquals(expected.next!!.current, actual.next!!.current)
     }
 }
