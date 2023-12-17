@@ -1,6 +1,5 @@
 package net.davidcrotty.algochallenges
 
-import net.davidcrotty.algochallenges.data.ListNode
 import org.junit.Assert.assertEquals
 import org.junit.Test
 
@@ -8,15 +7,23 @@ class MergeTwoSortedListsTest {
 
     @Test
     fun mergeTwoSortedLists() {
-        val list1 = ListNode(1).apply {
-            next = ListNode(2).apply {
-                next = ListNode(4)
+        val list1 = ListNode2().apply {
+            value = 1
+            next = ListNode2().apply {
+                value = 2
+                next = ListNode2().apply {
+                    value = 4
+                }
             }
         }
 
-        val list2 = ListNode(1).apply {
-            next = ListNode(3).apply {
-                next = ListNode(4)
+        val list2 = ListNode2().apply {
+            value = 1
+            next = ListNode2().apply {
+                value = 3
+                next = ListNode2().apply {
+                    value = 4
+                }
             }
         }
 
@@ -24,12 +31,19 @@ class MergeTwoSortedListsTest {
         val sut = MergeTwoSortedLists()
         val actualHead = sut.mergeTwoLists(list1, list2)
 
-        val expectedHead = ListNode(1).apply {
-            next = ListNode(1).apply {
-                next = ListNode(2).apply {
-                    next = ListNode(3).apply {
-                        next = ListNode(4).apply {
-                            next = ListNode(4)
+        val expectedHead = ListNode2().apply {
+            value = 1
+            next = ListNode2().apply {
+                value = 1
+                next = ListNode2().apply {
+                    value = 2
+                    next = ListNode2().apply {
+                        value = 3
+                        next = ListNode2().apply {
+                            value = 4
+                            next = ListNode2().apply {
+                                value = 4
+                            }
                         }
                     }
                 }
