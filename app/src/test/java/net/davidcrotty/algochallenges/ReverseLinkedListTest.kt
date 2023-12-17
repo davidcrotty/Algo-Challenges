@@ -1,5 +1,6 @@
 package net.davidcrotty.algochallenges
 
+import net.davidcrotty.algochallenges.data.ListNode
 import org.junit.Assert.assertArrayEquals
 import org.junit.Assert.assertEquals
 import org.junit.Test

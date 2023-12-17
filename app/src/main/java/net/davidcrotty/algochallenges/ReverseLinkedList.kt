@@ -1,5 +1,7 @@
 package net.davidcrotty.algochallenges
 
+import net.davidcrotty.algochallenges.data.ListNode
+
 class ReverseLinkedList {
 
     fun reverseLinkedList(head: ListNode): ListNode {
@@ -16,8 +18,4 @@ class ReverseLinkedList {
 
         return prev!!
     }
-}
-
-class ListNode(var current: Int) {
-    var next: ListNode? = null
 }
