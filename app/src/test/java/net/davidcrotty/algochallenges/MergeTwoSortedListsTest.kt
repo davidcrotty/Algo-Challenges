@@ -7,23 +7,15 @@ class MergeTwoSortedListsTest {
 
     @Test
     fun mergeTwoSortedLists() {
-        val list1 = ListNode2().apply {
-            value = 1
-            next = ListNode2().apply {
-                value = 2
-                next = ListNode2().apply {
-                    value = 4
-                }
+        val list1 = ListNode2(1).apply {
+            next = ListNode2(2).apply {
+                next = ListNode2(4)
             }
         }
 
-        val list2 = ListNode2().apply {
-            value = 1
-            next = ListNode2().apply {
-                value = 3
-                next = ListNode2().apply {
-                    value = 4
-                }
+        val list2 = ListNode2(1).apply {
+            next = ListNode2(3).apply {
+                next = ListNode2(4)
             }
         }
 
@@ -31,19 +23,12 @@ class MergeTwoSortedListsTest {
         val sut = MergeTwoSortedLists()
         val actualHead = sut.mergeTwoLists(list1, list2)
 
-        val expectedHead = ListNode2().apply {
-            value = 1
-            next = ListNode2().apply {
-                value = 1
-                next = ListNode2().apply {
-                    value = 2
-                    next = ListNode2().apply {
-                        value = 3
-                        next = ListNode2().apply {
-                            value = 4
-                            next = ListNode2().apply {
-                                value = 4
-                            }
+        val expectedHead = ListNode2(1).apply {
+            next = ListNode2(1).apply {
+                next = ListNode2(2).apply {
+                    next = ListNode2(3).apply {
+                        next = ListNode2(4).apply {
+                            next = ListNode2(4)
                         }
                     }
                 }
