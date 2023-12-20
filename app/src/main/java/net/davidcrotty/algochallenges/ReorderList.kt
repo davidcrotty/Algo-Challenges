@@ -20,6 +20,8 @@ class ReorderList {
             result?.next = current // apply node to result
             current.next = null // break link
             current = nxt // shift along
+
+            result = result?.next // shift along list head
         }
 
 
