@@ -15,13 +15,20 @@ class ReorderList {
         var result: ListNode? = ListNode(0)
         var resultHead = result // so we can keep track of list head
 
-        while (current != null) {
-            var nxt = current.next // preserve list
-            result?.next = current // apply node to result
-            current.next = null // break link
-            current = nxt // shift along
+        var index = 0
 
-            result = result?.next // shift along list head
+        while (current != null) {
+            if (index > 0) {
+
+            } else {
+                var nxt = current.next // preserve list
+                result?.next = current // apply node to result
+                current.next = null // break link
+                current = nxt // shift along
+
+                result = result?.next // shift along list head
+            }
+            index++
         }
 
 
