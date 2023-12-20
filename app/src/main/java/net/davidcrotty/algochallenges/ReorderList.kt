@@ -18,8 +18,9 @@ class ReorderList {
         var index = 0
 
         while (current != null) {
-            if (index > 0) {
-
+            if (index > 0) { // mod this later
+                // reverse list and splice on end
+                val reversed = reverse(current)
             } else {
                 var nxt = current.next // preserve list
                 result?.next = current // apply node to result
@@ -35,6 +36,21 @@ class ReorderList {
         // add in inner loop for n - 1 using size
 
         return resultHead?.next!!
+    }
+
+    private fun reverse(head: ListNode): ListNode {
+
+        var current: ListNode? = head
+        var prev: ListNode? = null
+
+        while (current != null) {
+            val nxt = current.next // stash
+            current.next = prev // break link
+            prev = current // attach
+            current = nxt // continue if not null
+        }
+
+        return prev!!
     }
 
     private fun getSize(head: ListNode?): Int {
