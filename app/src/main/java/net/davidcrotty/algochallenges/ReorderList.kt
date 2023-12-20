@@ -11,11 +11,23 @@ class ReorderList {
         val listSize = getSize(head)
 
         // loop and alternate each one
+        var current: ListNode? = head
+        var result: ListNode? = ListNode(0)
+        var resultHead = result // so we can keep track of list head
+
+        while (current != null) {
+            // just reform list
+            var nxt = current.next // preserve list
+            result?.next = current // apply node to result
+            current.next = null // break link
+            current = nxt // shift along
+            result = result?.next // shift along list head
+        }
 
 
         // add in inner loop for n - 1 using size
 
-        return ListNode(0)
+        return resultHead?.next!!
     }
 
     private fun getSize(head: ListNode?): Int {
