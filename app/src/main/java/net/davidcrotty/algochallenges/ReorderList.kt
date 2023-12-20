@@ -16,12 +16,10 @@ class ReorderList {
         var resultHead = result // so we can keep track of list head
 
         while (current != null) {
-            // just reform list
             var nxt = current.next // preserve list
             result?.next = current // apply node to result
             current.next = null // break link
             current = nxt // shift along
-            result = result?.next // shift along list head
         }
 
 
