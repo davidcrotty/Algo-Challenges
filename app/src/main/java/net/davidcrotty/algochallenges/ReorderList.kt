@@ -20,7 +20,13 @@ class ReorderList {
         while (current != null) {
             if (index > 0) { // mod this later
                 // reverse list and splice on end
-                val reversed = reverse(current)
+                var reversed = reverse(current)
+                var nxt = reversed.next
+                result?.next = reversed
+                reversed.next = null
+                current = nxt
+
+                result = result?.next // shift along list head
             } else {
                 var nxt = current.next // preserve list
                 result?.next = current // apply node to result
