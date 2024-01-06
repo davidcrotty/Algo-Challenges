@@ -58,12 +58,12 @@ class InvertBinaryTreeTest {
     fun largeTreeInverted(): TreeNode {
         return TreeNode(4).apply {
             left = TreeNode(7).apply {
-                left = TreeNode(3)
-                right = TreeNode(1)
-            }
-            right = TreeNode(2).apply {
                 left = TreeNode(9)
                 right = TreeNode(6)
+            }
+            right = TreeNode(2).apply {
+                left = TreeNode(3)
+                right = TreeNode(1)
             }
         }
     }
