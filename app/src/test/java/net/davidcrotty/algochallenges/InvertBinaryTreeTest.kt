@@ -15,8 +15,8 @@ class InvertBinaryTreeTest {
 
         val expected = smallTreeInverted()
         assertEquals(expected, actual)
-        assertEquals(expected.left, actual.left)
-        assertEquals(expected.right, actual.right)
+        assertEquals(expected.left, actual!!.left)
+        assertEquals(expected.right, actual!!.right)
     }
 
     @Test
@@ -30,8 +30,8 @@ class InvertBinaryTreeTest {
         assertEquals(expected, actual)
 
         // L1
-        assertEquals(expected.left, actual.left)
-        assertEquals(expected.right, actual.right)
+        assertEquals(expected.left, actual!!.left)
+        assertEquals(expected.right, actual!!.right)
 
         // L2 one side
         assertEquals(expected.left!!.left, actual.left!!.left)
