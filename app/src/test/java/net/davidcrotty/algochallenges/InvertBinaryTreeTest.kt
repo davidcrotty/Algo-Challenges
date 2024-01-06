@@ -19,14 +19,63 @@ class InvertBinaryTreeTest {
         assertEquals(expected.right, actual.right)
     }
 
-    fun smallTree(): TreeNode {
+    @Test
+    fun invertBinaryTreeLarge() {
+        val input = largeTree()
+
+        val sut = InvertBinaryTree()
+        val actual = sut.invertBinaryTree(input)
+
+        val expected = largeTreeInverted()
+        assertEquals(expected, actual)
+
+        // L1
+        assertEquals(expected.left, actual.left)
+        assertEquals(expected.right, actual.right)
+
+        // L2 one side
+        assertEquals(expected.left!!.left, actual.left!!.left)
+        assertEquals(expected.left!!.right, actual.left!!.right)
+
+        // L2 other side
+        assertEquals(expected.right!!.left, actual.right!!.left)
+        assertEquals(expected.right!!.right, actual.right!!.right)
+    }
+
+    fun largeTree(): TreeNode {
+        return TreeNode(4).apply {
+            left = TreeNode(2).apply {
+                left = TreeNode(1)
+                right = TreeNode(3)
+            }
+            right = TreeNode(7).apply {
+                left = TreeNode(6)
+                right = TreeNode(9)
+            }
+        }
+    }
+
+    fun largeTreeInverted(): TreeNode {
+        return TreeNode(4).apply {
+            left = TreeNode(7).apply {
+                left = TreeNode(3)
+                right = TreeNode(1)
+            }
+            right = TreeNode(2).apply {
+                left = TreeNode(9)
+                right = TreeNode(6)
+            }
+        }
+    }
+
+    private fun smallTree(): TreeNode {
         return TreeNode(2).apply {
             left = TreeNode(1)
             right = TreeNode(3)
         }
     }
 
-    fun smallTreeInverted(): TreeNode {
+    private fun smallTreeInverted(): TreeNode {
         return TreeNode(2).apply {
             left = TreeNode(3)
             right = TreeNode(1)
